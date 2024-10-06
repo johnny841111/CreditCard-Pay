@@ -18,7 +18,7 @@ const CreditCard = ({CN,CH,Ep_year,Ep_mon,CT}) => {
       </div>
       <div className="card-expiry">
         <span>Expires</span>
-        <span>{Ep_year}/{Ep_mon}</span>
+        <span>{Ep_mon}/{Ep_year}</span>
       </div>
     </div>
   );
