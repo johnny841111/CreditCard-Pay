@@ -1,0 +1,154 @@
+.credit-card {
+  width: 400px; /* 調整為垂直比例 */
+  height: 250px; /* 增加高度 */
+  border-radius: 15px;
+  background: linear-gradient(135deg, #090909, #4d4d4e);
+  color: white;
+  padding: 20px; /* 減少內邊距，讓內容更緊湊 */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  
+}
+
+.card-chip {
+  width: 50px; 
+  height: 35px; 
+  background: gold;
+  border-radius: 4px;
+}
+
+.card-type {
+  font-size: 1.4rem; /* 調整字體大小 */
+  text-transform: uppercase;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px; 
+}
+
+.card-number {
+  font-size: 1.4rem; 
+  letter-spacing: 2px; 
+  margin-bottom: 30px; 
+}
+
+.card-holder {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem; 
+  text-transform: uppercase;
+  margin-bottom: 15px; 
+}
+
+.card-expiry {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem; 
+  text-transform: uppercase;
+}
+
+
+.submit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.form-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+ 
+}
+
+.form-input:focus {
+  border-color: #0070f3;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.select-input {
+  flex: 1;
+}
+
+.expiry-cvn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.submit-button {
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #0070f3;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #005bb5;
+}
+
+.credit-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.credit-card-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+.input.form-input.select-input{
+  width: 10px;
+}
+
+.input-image{
+  width: 100px;
+}
+.input-image3{
+  width: 30px;
+}
+.input-image2{
+  width: 80px;
+}
+.input-image4{
+  width: 35px;
+}
