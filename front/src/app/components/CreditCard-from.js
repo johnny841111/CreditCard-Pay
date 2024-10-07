@@ -5,31 +5,58 @@ import '../css/CreditCard.css'; // 假設你將 CSS 文件放在 css 目錄中
 let CreditCard_from = ({ setCN, setCH, setEp_mon, setEp_year,setCT,CN }) => {
 
   const generateMonthOptions = () => {
-    return [...Array(12)].map((_, index) => {
-      const monthNumber = index + 1;
-      return (
-        <option key={monthNumber} value={monthNumber}>
-          {monthNumber}
+    let Month=["01","02","03","04","05","06","07","08","09","10","11","12"]
+    return (
+      Month.map((value)=>
+        <option key={value} value={value}>
+          {value}
         </option>
-      );
-    });
+      )
+    );
   };
 
   const generateYearOptions = () => {
-    const currentYear = new Date().getFullYear();
-    return Array.from({ length: 15 }, (_, index) => {
-      const year = currentYear + index;
-      return (
-        <option key={year} value={year}>
-          {year}
+    let currentYear = new Date().getFullYear();
+    let array=[]
+    for(let i =0;i<11;i++){
+      array.push(currentYear+i)
+    }
+    return (
+      array.map((value)=>
+        <option key={value} value={value}>
+          {value}
         </option>
-      );
-    });
+      )
+    );
+
   };
 
-function test() {
-        alert(CN);
-      }
+async function postCardData() {
+   let cardData={
+    
+   }
+
+  try {
+    const response = await fetch(url, {
+      method: "POST", // 指定 HTTP 方法為 POST
+      headers: {
+        "Content-Type": "application/json" // 設置請求標頭為 JSON
+      },
+      body: JSON.stringify(data) // 將要發送的數據轉換為 JSON 格式
+    });
+
+    if (!response.ok) {
+      throw new Error(`網路錯誤: ${response.status}`); // 如果回應不是成功狀態，拋出錯誤
+    }
+
+    const responseData = await response.json(); // 等待將回應轉換為 JSON 格式
+    console.log("成功:", responseData); // 輸出取得的資料
+    return responseData; // 返回資料
+  } catch (error) {
+    console.error("錯誤:", error); // 捕獲異常並輸出錯誤
+  }
+}         
+
       
 
 function checkType (value){
@@ -41,10 +68,10 @@ function checkType (value){
       } else if (value[0] === "3") {
         setCT(<img src="/JCB.png" alt="JCB Logo" className="input-image3" />);
       } else {
-        setCT(<img src="/question.png" alt="JCB Logo" className="input-image4" />); // 當輸入不匹配時清空卡片類型
+        setCT(""); // 當輸入不匹配時清空卡片類型
       }
     } else {
-      setCT(<img src="/question.png" alt="JCB Logo" className="input-image4" />); // 當輸入為空時清空卡片類型
+      setCT(""); // 當輸入為空時清空卡片類型
     }
   }
 
@@ -61,7 +88,7 @@ function checkType (value){
           onChange={(e) => {
             let value=e.target.value
             if (value===""){
-                value="****************"
+                value=""
             }
                 setCN(value);
                 checkType(value)     

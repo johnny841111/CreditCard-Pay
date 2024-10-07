@@ -2,8 +2,8 @@
   width: 400px; /* 調整為垂直比例 */
   height: 250px; /* 增加高度 */
   border-radius: 15px;
-  background: linear-gradient(135deg, #090909, #4d4d4e);
-  color: white;
+  background: linear-gradient(135deg, #fff7f7, #dfaf94);
+  color: rgb(12, 12, 12);
   padding: 20px; /* 減少內邊距，讓內容更緊湊 */
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
   font-family: Arial, sans-serif;
@@ -144,11 +144,8 @@
   width: 100px;
 }
 .input-image3{
-  width: 30px;
+  width: 60px;
 }
 .input-image2{
   width: 80px;
-}
-.input-image4{
-  width: 35px;
 }

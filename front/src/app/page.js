@@ -5,10 +5,10 @@ import CreditCard_from from './components/CreditCard-from';
 
 
 export default function Home() {
-  let [CN, setCN] = useState("****************");
+  let [CN, setCN] = useState("");
   let [CH, setCH] = useState("Input your name");
-  let [Ep_mon, setEp_mon] = useState("00");
-  let [Ep_year, setEp_year] = useState("00");
+  let [Ep_mon, setEp_mon] = useState("01");
+  let [Ep_year, setEp_year] = useState("2024");
   let [CVN, setCVN] = useState(" ");
   let [CT,setCT]=useState("")
 
