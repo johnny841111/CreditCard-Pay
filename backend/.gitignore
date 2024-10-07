@@ -1,0 +1,13 @@
+# Ignore Cargo's build output
+/target/
+
+# Ignore editor-specific files
+.idea/
+/.vscode/
+
+# Ignore operating system files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files
+.env
