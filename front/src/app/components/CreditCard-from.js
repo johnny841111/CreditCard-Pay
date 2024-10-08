@@ -32,30 +32,22 @@ let CreditCard_from = ({ setCN, setCH, setEp_mon, setEp_year,setCT,CN }) => {
   };
 
 async function postCardData() {
-   let cardData={
-    
-   }
 
-  try {
-    const response = await fetch(url, {
-      method: "POST", // 指定 HTTP 方法為 POST
-      headers: {
-        "Content-Type": "application/json" // 設置請求標頭為 JSON
-      },
-      body: JSON.stringify(data) // 將要發送的數據轉換為 JSON 格式
-    });
+    let url;
+    let cardData = {}
+    try {
+       let reponse=await fetch(url,{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(cardData)
+        })
+        if (!reponse.ok){
+            throw new Error('Failed to post card data')
+        }
+    }catch(err){
 
-    if (!response.ok) {
-      throw new Error(`網路錯誤: ${response.status}`); // 如果回應不是成功狀態，拋出錯誤
     }
-
-    const responseData = await response.json(); // 等待將回應轉換為 JSON 格式
-    console.log("成功:", responseData); // 輸出取得的資料
-    return responseData; // 返回資料
-  } catch (error) {
-    console.error("錯誤:", error); // 捕獲異常並輸出錯誤
-  }
-}         
+}
 
       
 
