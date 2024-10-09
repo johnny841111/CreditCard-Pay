@@ -9,7 +9,7 @@ export default function Home() {
   let [CH, setCH] = useState("Input your name");
   let [Ep_mon, setEp_mon] = useState("01");
   let [Ep_year, setEp_year] = useState("2024");
-  let [CVN, setCVN] = useState(" ");
+  let [CVV, setCVV] = useState(" ");
   let [CT,setCT]=useState("")
 
   
@@ -32,6 +32,9 @@ export default function Home() {
           setEp_year={setEp_year}
           setCT={setCT}
           CN={CN}
+          CH={CH}
+          CVV={CVV}
+          setCVV={setCVV}
         />
       </div>
     </div>

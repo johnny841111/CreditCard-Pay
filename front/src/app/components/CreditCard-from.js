@@ -2,7 +2,7 @@ import React,{ useState,use } from 'react';
 import '../css/CreditCard.css'; // 假設你將 CSS 文件放在 css 目錄中
 
 
-let CreditCard_from = ({ setCN, setCH, setEp_mon, setEp_year,setCT,CN }) => {
+let CreditCard_from = ({ setCN, setCH, setEp_mon, setEp_year,setCT,CN,CH,CVV,setCVV }) => {
 
   const generateMonthOptions = () => {
     let Month=["01","02","03","04","05","06","07","08","09","10","11","12"]
@@ -66,7 +66,16 @@ function checkType (value){
       setCT(""); // 當輸入為空時清空卡片類型
     }
   }
+  function isNumeric(str) {
+    return /^\d+$/.test(str);
+  }
 
+  function No_value(str) {
+    return  /^[a-zA-Z]+$/.test(str);
+  }
+  function check_CVV_type(str) {
+    return  /^\d+$/.test(str);
+  }
 
   return (
     <div className="submit-form">
@@ -135,6 +144,7 @@ function checkType (value){
             className="form-input"
             type="text"
             maxLength="3"
+            onChange={(e) => setCVV(e.target.value)}
           />
         </div>
 
@@ -143,7 +153,22 @@ function checkType (value){
       <button 
       className="submit-button" 
       onClick={()=>{
-        test()
+        let cardNumber= isNumeric(CN)
+        let cardHolder=No_value(CH)
+        let CVV_type=check_CVV_type(CVV)
+        if (cardNumber==false){
+          alert("卡號為不支援的字符")
+          return false
+        }
+        if (cardHolder==false){
+          alert("持卡人欄位不支援此字符")
+          return false
+        }
+        if (CVV_type==false){
+          alert("CVV不支援此字符")
+          return false
+        }
+        
       }}
       
       >
