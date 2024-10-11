@@ -35,6 +35,8 @@ export default function Home() {
           CH={CH}
           CVV={CVV}
           setCVV={setCVV}
+          Ep_mon={Ep_mon}
+          Ep_year={Ep_year}
         />
       </div>
     </div>

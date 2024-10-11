@@ -2,7 +2,7 @@ import React,{ useState,use } from 'react';
 import '../css/CreditCard.css'; // 假設你將 CSS 文件放在 css 目錄中
 
 
-let CreditCard_from = ({ setCN, setCH, setEp_mon, setEp_year,setCT,CN,CH,CVV,setCVV }) => {
+let CreditCard_from = ({ setCN, setCH, setEp_mon, setEp_year,setCT,CN,CH,CVV,setCVV,Ep_mon,Ep_year }) => {
 
   const generateMonthOptions = () => {
     let Month=["01","02","03","04","05","06","07","08","09","10","11","12"]
@@ -31,23 +31,6 @@ let CreditCard_from = ({ setCN, setCH, setEp_mon, setEp_year,setCT,CN,CH,CVV,set
 
   };
 
-async function postCardData() {
-
-    let url;
-    let cardData = {}
-    try {
-       let reponse=await fetch(url,{
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(cardData)
-        })
-        if (!reponse.ok){
-            throw new Error('Failed to post card data')
-        }
-    }catch(err){
-
-    }
-}
 
       
 
@@ -66,8 +49,34 @@ function checkType (value){
       setCT(""); // 當輸入為空時清空卡片類型
     }
   }
+
+
+  function have_correct_infromation(){
+    let cardNumber= isNumeric(CN)
+        let cardHolder=No_value(CH)
+        let CVV_type=check_CVV_type(CVV)
+        if (cardNumber==false){
+          alert("卡號為不支援的字符或長度不足")
+          return false
+        }
+        if (cardHolder==false){
+          alert("持卡人欄位不支援此字符")
+          return false
+        }
+        if (CVV_type==false){
+          alert("CVV不支援此字符")
+          return false
+        }
+        
+      }
+  
   function isNumeric(str) {
+    if (str.length!=16){
+      return false
+    }
+
     return /^\d+$/.test(str);
+    
   }
 
   function No_value(str) {
@@ -76,6 +85,39 @@ function checkType (value){
   function check_CVV_type(str) {
     return  /^\d+$/.test(str);
   }
+
+  async function post_data_to_backend(){
+    let cardData={
+      CardNumber:CN,
+      CardHolder:CH,
+      ExpirationMonth:Ep_mon,
+      ExpirationYear:Ep_year,
+      CVV:CVV
+    };
+    let url="";
+
+    try{
+      let response = await fetch(url,{
+        method: 'POST', // 指定 HTTP 方法
+        headers: {
+            'Content-Type': 'application/json', // 設定內容類型
+        },
+        body: JSON.stringify(cardData)
+      });
+      if (response.ok==false){
+        throw new Error("傳送失敗");
+      }
+      let data= await response
+      if (data==true){
+          alert("付款成功")
+      }
+    }catch(err){
+       console.log(err)
+    }
+
+  }
+
+
 
   return (
     <div className="submit-form">
@@ -152,25 +194,10 @@ function checkType (value){
 
       <button 
       className="submit-button" 
-      onClick={()=>{
-        let cardNumber= isNumeric(CN)
-        let cardHolder=No_value(CH)
-        let CVV_type=check_CVV_type(CVV)
-        if (cardNumber==false){
-          alert("卡號為不支援的字符")
-          return false
-        }
-        if (cardHolder==false){
-          alert("持卡人欄位不支援此字符")
-          return false
-        }
-        if (CVV_type==false){
-          alert("CVV不支援此字符")
-          return false
-        }
-        
+      onClick={()=>{  //先檢查資料服不符合格式，再提交卡片資料到後端
+       have_correct_infromation(); 
+       post_data_to_backend()
       }}
-      
       >
         Submit</button>
     </div>

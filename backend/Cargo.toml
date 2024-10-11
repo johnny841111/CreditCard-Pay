@@ -4,3 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+actix-web = "4"
+tokio = { version = "1", features = ["full"] } #tokio：這是異步運行時環境，Actix Web 依賴它來處理異步任務。
+serde = { version = "1", features = ["derive"] } 
+serde_json = "1"  #serde 和 serde_json：這些是用來處理JSON的依賴，方便我們在交易後台中進行數據序列化和反序列化。
