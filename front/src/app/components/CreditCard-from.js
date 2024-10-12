@@ -94,7 +94,7 @@ function checkType (value){
       ExpirationYear:Ep_year,
       CVV:CVV
     };
-    let url="";
+    let url="http://127.0.0.1:8080/cardData_Post";
 
     try{
       let response = await fetch(url,{
@@ -108,7 +108,7 @@ function checkType (value){
         throw new Error("傳送失敗");
       }
       let data= await response
-      if (data==true){
+      if (data.ok==true){
           alert("付款成功")
       }
     }catch(err){
